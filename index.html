@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="日井與文信的蝦皮流量、商品競爭力與轉換策略儀表板" />
+  <title>史奴比的流量追蹤</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-v11.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="回首頁"><span class="brand-mark">S</span><span>史奴比的流量追蹤</span></a>
+    <nav class="store-switch" aria-label="店舖切換">
+      <button class="store-btn active" data-store="rijing">01 日井</button>
+      <button class="store-btn" data-store="wenxin">02 文信</button>
+    </nav>
+    <div class="top-meta"><span class="status-dot"></span><span>真實資料已同步</span><button id="versionButton" class="version">v1.1.1</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">WEEKLY SHOP PULSE · <span id="dateRange">載入中</span></p>
+        <h1>流量來了，<br><em>成交跟上了嗎？</em></h1>
+        <p class="hero-copy">把每週蝦皮報表變成下一個可執行動作。優先改善商品頁、溝通與服務體驗，再評估是否需要付費放大。</p>
+      </div>
+      <div class="mascot-card" aria-label="原創黑白漫畫小獵犬插畫">
+        <div class="dog"><span class="ear"></span><span class="eye"></span><span class="nose"></span></div>
+        <div class="speech">嗅到轉換<br>卡點了！</div>
+        <div class="scribble">DATA → ACTION</div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="分析頁籤">
+      <button class="tab active" data-tab="overview">營運總覽</button>
+      <button class="tab" data-tab="traffic">流量分析</button>
+      <button class="tab" data-tab="products">產品競爭力</button>
+      <button class="tab" data-tab="playbook">AI 行動策略</button>
+      <button class="tab" data-tab="data">原始資料</button>
+    </nav>
+
+    <section id="overview" class="panel active">
+      <div class="section-head"><div><p class="eyebrow">THE QUICK READ</p><h2><span id="storeName">日井</span>本週怎麼了？</h2></div><span id="healthBadge" class="health">需關注轉換</span></div>
+      <div id="kpis" class="kpi-grid"></div>
+      <div class="two-col">
+        <article class="card chart-card"><div class="card-head"><div><small>轉換漏斗</small><h3>每 1,000 次瀏覽的去向</h3></div><span class="tag">核心診斷</span></div><div id="funnel" class="funnel"></div></article>
+        <article class="card"><div class="card-head"><div><small>AI 本週判讀</small><h3>先解最靠近成交的問題</h3></div><span class="spark">✦</span></div><div id="diagnosis" class="diagnosis"></div></article>
+      </div>
+    </section>
+
+    <section id="traffic" class="panel">
+      <div class="section-head"><div><p class="eyebrow">TRAFFIC QUALITY</p><h2>流量不只看多寡，更看意圖</h2></div><span class="muted">與 08/03—08/09 比較</span></div>
+      <div class="two-col">
+        <article class="card"><div class="card-head"><div><small>商品流量分布</small><h3>營收前七商品：曝光與點擊</h3></div><div class="legend"><i class="black"></i>曝光 <i class="yellow"></i>點擊</div></div><div id="trendChart" class="line-chart"></div></article>
+        <article class="card"><div class="card-head"><div><small>漏斗品質</small><h3>期間整體效率</h3></div></div><div id="sources" class="source-list"></div></article>
+      </div>
+    </section>
+
+    <section id="products" class="panel">
+      <div class="section-head"><div><p class="eyebrow">PRODUCT EDGE</p><h2>商品競爭力雷達</h2></div><span class="muted">依流量、轉換與評價綜合排序</span></div>
+      <div id="productCards" class="product-grid"></div>
+    </section>
+
+    <section id="playbook" class="panel">
+      <div class="section-head"><div><p class="eyebrow">LOW-COST PLAYBOOK</p><h2>先做內部調整，讓消費者有感</h2></div><span class="tag">不以付費廣告為主</span></div>
+      <div id="actions" class="action-grid"></div>
+      <article class="card simulator"><div class="card-head"><div><small>效益模擬</small><h3>若改善商品頁轉換率</h3></div><strong id="simLift">+0.4%</strong></div><label>轉換率增加 <input id="liftSlider" type="range" min="0.1" max="1.5" value="0.4" step="0.1"><span id="liftLabel">0.4%</span></label><div id="simulation" class="sim-grid"></div><p class="fineprint">此為情境估算，不是成果保證；假設流量與客單價不變。</p></article>
+    </section>
+
+    <section id="data" class="panel">
+      <div class="section-head"><div><p class="eyebrow">SOURCE CONTROL</p><h2>原始資料與同步狀態</h2></div><label class="upload">匯入 CSV<input id="csvInput" type="file" accept=".csv,text/csv" hidden></label></div>
+      <div class="data-meta"><div><small>Drive 資料夾</small><a id="driveLink" target="_blank" rel="noopener">開啟目前店舖資料夾 ↗</a></div><div><small>更新模式</small><strong>增量 · 檔案雜湊去重</strong></div><div><small>最後同步</small><strong id="lastSync">2026-08-18 09:20</strong></div></div>
+      <div class="table-wrap"><table><thead><tr><th>商品</th><th>曝光</th><th>點擊</th><th>點擊率</th><th>訪客</th><th>加購訪客</th><th>訂單</th><th>營業額</th></tr></thead><tbody id="rawTable"></tbody></table></div>
+      <p id="importMessage" class="fineprint">目前顯示 Drive 最新檔案的父商品彙總資料；不含買家姓名、電話、地址或訂單編號。</p>
+    </section>
+  </main>
+
+  <footer><span>史奴比的流量追蹤 · Internal use only</span><span>Original comic-inspired design · <button id="footerVersion">v1.1.1</button></span></footer>
+  <dialog id="versionDialog"><button class="close" aria-label="關閉">×</button><p class="eyebrow">CHANGELOG</p><h2>版本 v1.1.1</h2><ul><li>接入 2026/08/03—08/09 與 08/13—08/19 兩個區間</li><li>加入真實週期比較與增量檔案 checkpoint</li><li>以真實曝光、點擊、訪客、加購、訂單與營收取代示範資料</li><li>首次部署自動啟用 GitHub Pages</li></ul></dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

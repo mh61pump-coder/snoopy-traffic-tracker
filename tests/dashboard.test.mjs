@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+test('stores remain isolated',async()=>{const js=await readFile('app.js','utf8');assert.match(js,/rijing:/);assert.match(js,/wenxin:/);assert.match(js,/let current='rijing'/)});
+test('no secret is embedded',async()=>{const all=(await Promise.all(['index.html','app.js'].map(f=>readFile(f,'utf8')))).join('\n');assert.doesNotMatch(all,/client_secret|private_key|AIza[0-9A-Za-z_-]{20,}/i)});
+test('real shop data is isolated and contains two checkpoints',async()=>{const data=JSON.parse(await readFile('data/analysis.json','utf8'));assert.equal(data.version,'1.1.1');assert.equal(data.shops.rijing.source.files.length,2);assert.equal(data.shops.wenxin.source.files.length,2);assert.equal(data.shops.rijing.totals.orders,102);assert.equal(data.shops.wenxin.totals.orders,437);assert.notEqual(data.shops.rijing.source.files[0].sha256,data.shops.wenxin.source.files[0].sha256)});
+test('published JSON excludes buyer PII and order ids',async()=>{const data=await readFile('data/analysis.json','utf8');assert.doesNotMatch(data,/買家姓名|收件地址|電話號碼|訂單編號/)});
