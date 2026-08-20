@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="日井與文信的蝦皮流量、商品競爭力與轉換策略儀表板" />
+  <link rel="icon" href="data:," />
   <title>史奴比的流量追蹤</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="styles-v11.css" />
+  <link rel="stylesheet" href="styles-v12.css" />
 </head>
 <body>
   <header class="topbar">
@@ -15,7 +17,7 @@
       <button class="store-btn active" data-store="rijing">01 日井</button>
       <button class="store-btn" data-store="wenxin">02 文信</button>
     </nav>
-    <div class="top-meta"><span class="status-dot"></span><span>真實資料已同步</span><button id="versionButton" class="version">v1.1.1</button></div>
+    <div class="top-meta"><span class="status-dot"></span><span>真實資料已同步</span><button id="versionButton" class="version">v1.2.0</button></div>
   </header>
 
   <main>
@@ -41,43 +43,44 @@
     </nav>
 
     <section id="overview" class="panel active">
-      <div class="section-head"><div><p class="eyebrow">THE QUICK READ</p><h2><span id="storeName">日井</span>本週怎麼了？</h2></div><span id="healthBadge" class="health">需關注轉換</span></div>
+      <div class="section-head"><div><p class="eyebrow">THE QUICK READ</p><h2><span id="storeName">日井</span>目前怎麼了？</h2></div><span id="healthBadge" class="health">需關注轉換</span></div>
       <div id="kpis" class="kpi-grid"></div>
       <div class="two-col">
-        <article class="card chart-card"><div class="card-head"><div><small>轉換漏斗</small><h3>每 1,000 次瀏覽的去向</h3></div><span class="tag">核心診斷</span></div><div id="funnel" class="funnel"></div></article>
-        <article class="card"><div class="card-head"><div><small>AI 本週判讀</small><h3>先解最靠近成交的問題</h3></div><span class="spark">✦</span></div><div id="diagnosis" class="diagnosis"></div></article>
+        <article class="card chart-card"><div class="card-head"><div><small>轉換漏斗</small><h3>實際人數如何走到成交</h3><p class="card-intro">只比較「人數」：店舖訪客 → 蝦皮判定的潛在買家 → 實際買家。每一階段都標示留下比例與流失人數。</p></div><span class="tag">核心診斷</span></div><div id="funnel" class="funnel"></div></article>
+        <article class="card"><div class="card-head"><div><small>AI 期間判讀</small><h3>先解最靠近成交的問題</h3></div><span class="spark">✦</span></div><div id="diagnosis" class="diagnosis"></div></article>
       </div>
     </section>
 
     <section id="traffic" class="panel">
-      <div class="section-head"><div><p class="eyebrow">TRAFFIC QUALITY</p><h2>流量不只看多寡，更看意圖</h2></div><span class="muted">與 08/03—08/09 比較</span></div>
-      <div class="two-col">
-        <article class="card"><div class="card-head"><div><small>商品流量分布</small><h3>營收前七商品：曝光與點擊</h3></div><div class="legend"><i class="black"></i>曝光 <i class="yellow"></i>點擊</div></div><div id="trendChart" class="line-chart"></div></article>
-        <article class="card"><div class="card-head"><div><small>漏斗品質</small><h3>期間整體效率</h3></div></div><div id="sources" class="source-list"></div></article>
+      <div class="section-head"><div><p class="eyebrow">TRAFFIC QUALITY</p><h2>流量不只看多寡，更看意圖</h2></div><span class="muted">本期 19 天；趨勢與 2026/07 比較</span></div>
+      <div class="traffic-layout">
+        <article class="card"><div class="card-head"><div><small>商品流量分布</small><h3>商品訪客數前七名</h3><p class="card-intro">排行依商品訪客數；每一列同步列出完整商品名稱、點擊、訂單與銷售額。</p></div><span class="tag">實際數字</span></div><div id="trendChart"></div></article>
+        <article class="card"><div class="card-head"><div><small>漏斗品質</small><h3>每個比率的公式與讀法</h3><p class="card-intro">比率、分子／分母、白話含義與較 7 月變化一次列清楚。</p></div></div><div id="sources" class="source-list"></div></article>
       </div>
     </section>
 
     <section id="products" class="panel">
-      <div class="section-head"><div><p class="eyebrow">PRODUCT EDGE</p><h2>商品競爭力雷達</h2></div><span class="muted">依流量、轉換與評價綜合排序</span></div>
+      <div class="section-head"><div><p class="eyebrow">PRODUCT EDGE</p><h2>商品競爭力拆解</h2></div><span class="muted">同店、同期間父商品內部比較</span></div>
+      <article id="scoreGuide" class="score-guide"></article>
       <div id="productCards" class="product-grid"></div>
     </section>
 
     <section id="playbook" class="panel">
       <div class="section-head"><div><p class="eyebrow">LOW-COST PLAYBOOK</p><h2>先做內部調整，讓消費者有感</h2></div><span class="tag">不以付費廣告為主</span></div>
       <div id="actions" class="action-grid"></div>
-      <article class="card simulator"><div class="card-head"><div><small>效益模擬</small><h3>若改善商品頁轉換率</h3></div><strong id="simLift">+0.4%</strong></div><label>轉換率增加 <input id="liftSlider" type="range" min="0.1" max="1.5" value="0.4" step="0.1"><span id="liftLabel">0.4%</span></label><div id="simulation" class="sim-grid"></div><p class="fineprint">此為情境估算，不是成果保證；假設流量與客單價不變。</p></article>
+      <article class="card simulator"><div class="card-head"><div><small>效益模擬</small><h3>若訪客成為買家的比率改善</h3></div><strong id="simLift">+0.4 個百分點</strong></div><label>訪客成交率增加 <input id="liftSlider" type="range" min="0.1" max="1.5" value="0.4" step="0.1"><span id="liftLabel">0.4%</span></label><div id="simulation" class="sim-grid"></div><p class="fineprint">此為情境估算，不是成果保證；假設店舖訪客、每位買家訂單數與平均訂單金額不變。</p></article>
     </section>
 
     <section id="data" class="panel">
       <div class="section-head"><div><p class="eyebrow">SOURCE CONTROL</p><h2>原始資料與同步狀態</h2></div><label class="upload">匯入 CSV<input id="csvInput" type="file" accept=".csv,text/csv" hidden></label></div>
-      <div class="data-meta"><div><small>Drive 資料夾</small><a id="driveLink" target="_blank" rel="noopener">開啟目前店舖資料夾 ↗</a></div><div><small>更新模式</small><strong>增量 · 檔案雜湊去重</strong></div><div><small>最後同步</small><strong id="lastSync">2026-08-18 09:20</strong></div></div>
+      <div class="data-meta"><div><small>Drive 資料夾</small><a id="driveLink" target="_blank" rel="noopener">開啟目前店舖資料夾 ↗</a></div><div><small>已納入來源</small><strong id="sourceCount">4 份檔案</strong></div><div><small>更新模式</small><strong>增量 · SHA-256 去重</strong></div><div><small>最後同步</small><strong id="lastSync">載入中</strong></div></div>
       <div class="table-wrap"><table><thead><tr><th>商品</th><th>曝光</th><th>點擊</th><th>點擊率</th><th>訪客</th><th>加購訪客</th><th>訂單</th><th>營業額</th></tr></thead><tbody id="rawTable"></tbody></table></div>
       <p id="importMessage" class="fineprint">目前顯示 Drive 最新檔案的父商品彙總資料；不含買家姓名、電話、地址或訂單編號。</p>
     </section>
   </main>
 
-  <footer><span>史奴比的流量追蹤 · Internal use only</span><span>Original comic-inspired design · <button id="footerVersion">v1.1.1</button></span></footer>
-  <dialog id="versionDialog"><button class="close" aria-label="關閉">×</button><p class="eyebrow">CHANGELOG</p><h2>版本 v1.1.1</h2><ul><li>接入 2026/08/03—08/09 與 08/13—08/19 兩個區間</li><li>加入真實週期比較與增量檔案 checkpoint</li><li>以真實曝光、點擊、訪客、加購、訂單與營收取代示範資料</li><li>首次部署自動啟用 GitHub Pages</li></ul></dialog>
+  <footer><span>史奴比的流量追蹤 · Internal use only</span><span>Original comic-inspired design · <button id="footerVersion">v1.2.0</button></span></footer>
+  <dialog id="versionDialog"><button class="close" aria-label="關閉">×</button><p class="eyebrow">CHANGELOG</p><h2>版本 v1.2.0</h2><ul><li>重新讀取日井／文信 2026/07 與 2026/08/01—08/19 共 8 份最新檔案</li><li>轉換漏斗改為實際人數、階段留存率與流失人數</li><li>商品流量前七名新增完整名稱及訪客、點擊、訂單、銷售額</li><li>漏斗品質新增公式、白話解讀及較 7 月百分點變化</li><li>競爭力指數公開五項權重、分項得分與原始營運數字</li></ul></dialog>
   <script type="module" src="app.js"></script>
 </body>
 </html>
