@@ -18,13 +18,13 @@ test('no secret or buyer PII is published', async () => {
 
 test('latest monthly datasets are isolated and checkpointed', async () => {
   const data = JSON.parse(await readFile('data/analysis.json', 'utf8'));
-  assert.equal(data.version, '1.2.0');
+  assert.equal(data.version, '1.2.1');
   assert.equal(data.shops.rijing.source.files.length, 4);
   assert.equal(data.shops.wenxin.source.files.length, 4);
-  assert.equal(data.shops.rijing.coverage.periodDays, 19);
+  assert.equal(data.shops.rijing.coverage.periodDays, 31);
   assert.equal(data.shops.rijing.coverage.priorPeriodDays, 31);
-  assert.equal(data.shops.rijing.totals.orders, 217);
-  assert.equal(data.shops.wenxin.totals.orders, 903);
+  assert.equal(data.shops.rijing.totals.orders, 339);
+  assert.equal(data.shops.wenxin.totals.orders, 1294);
   assert.notEqual(data.shops.rijing.source.files[0].sha256, data.shops.wenxin.source.files[0].sha256);
 });
 
@@ -39,9 +39,9 @@ test('clear funnel, top seven traffic products and score components exist', asyn
   }
 });
 
-test('daily-average comparison is used for unequal periods', async () => {
+test('period comparison remains normalized by covered days', async () => {
   const data = JSON.parse(await readFile('data/analysis.json', 'utf8'));
   const shop = data.shops.rijing;
-  const expected = ((shop.totals.revenue / 19) - (shop.priorTotals.revenue / 31)) / (shop.priorTotals.revenue / 31);
+  const expected = ((shop.totals.revenue / 31) - (shop.priorTotals.revenue / 31)) / (shop.priorTotals.revenue / 31);
   assert.ok(Math.abs(shop.comparisonDaily.revenue - expected) < 0.0001);
 });

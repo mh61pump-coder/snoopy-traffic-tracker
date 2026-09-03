@@ -13,28 +13,28 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "rijing": {
         "name": "日井",
-        "current_parent": ROOT / "work/r_parent_aug.xlsx",
+        "current_parent": ROOT / "work/r_parent_aug31.xlsx",
         "prior_parent": ROOT / "work/r_parent_jul.xlsx",
-        "current_shop": ROOT / "work/r_shop_aug.xlsx",
-        "prior_shop": ROOT / "work/r_shop_jul.xlsx",
+        "current_shop": ROOT / "work/r_shop_aug31.xlsx",
+        "prior_shop": ROOT / "work/r_shop_jul31_new.xlsx",
         "files": [
             ("16gu6yR92YA02oICGS86A_1hjja_DLIyQ", "parentskudetail.20260701_20260731.xlsx", "2026/07/01—07/31", "2026-08-20T08:33:12Z", "prior_parent"),
-            ("1_mjj5IlZ6aGbLSvLk4ZQuuYnlos494IT", "vincenthung.shopee-shop-stats.20260701-20260731.xlsx", "2026/07/01—07/31", "2026-08-20T08:30:34Z", "prior_shop"),
-            ("1mz5TRv7f8BqHm-bBoVmciMud8_ErbNbB", "parentskudetail.20260801_20260819.xlsx", "2026/08/01—08/19", "2026-08-20T08:34:12Z", "current_parent"),
-            ("1kUakLkLBHKkHRi4HjSiIHTawl-MBZAjt", "vincenthung.shopee-shop-stats.20260801-20260819.xlsx", "2026/08/01—08/19", "2026-08-20T08:31:48Z", "current_shop"),
+            ("1SGA6kh2ohqpbnSIa0nCMdi4XzMoiy4Ly", "vincenthung.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:16Z", "prior_shop"),
+            ("1iBhyaiM1cdA5UppLYmTEePuWojKfVklb", "parentskudetail.20260801_20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:43:06Z", "current_parent"),
+            ("1rh4LNXG0MAyL3Qwd0d98a7MZ-ZHdiKNf", "vincenthung.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:00Z", "current_shop"),
         ],
     },
     "wenxin": {
         "name": "文信",
-        "current_parent": ROOT / "work/w_parent_aug.xlsx",
+        "current_parent": ROOT / "work/w_parent_aug31.xlsx",
         "prior_parent": ROOT / "work/w_parent_jul.xlsx",
-        "current_shop": ROOT / "work/w_shop_aug.xlsx",
-        "prior_shop": ROOT / "work/w_shop_jul.xlsx",
+        "current_shop": ROOT / "work/w_shop_aug31.xlsx",
+        "prior_shop": ROOT / "work/w_shop_jul31_new.xlsx",
         "files": [
             ("18P8zmEL_YeZRHsLw-fNZHxxn4D5R1I9l", "parentskudetail.20260701_20260731 (1).xlsx", "2026/07/01—07/31", "2026-08-20T08:33:47Z", "prior_parent"),
-            ("1PCcj5UyMgksLm8p2gI_ryZogPB1sujcy", "fumioh.shopee-shop-stats.20260701-20260731.xlsx", "2026/07/01—07/31", "2026-08-20T08:31:13Z", "prior_shop"),
-            ("17NSOoBuBZPibQMLsjTZfyJREY2UzsAwm", "parentskudetail.20260801_20260819 (1).xlsx", "2026/08/01—08/19", "2026-08-20T08:35:03Z", "current_parent"),
-            ("18UUrWio_DbUcyLh6xMdsJi4U4by5Ry7f", "fumioh.shopee-shop-stats.20260801-20260819.xlsx", "2026/08/01—08/19", "2026-08-20T08:32:16Z", "current_shop"),
+            ("1jMXa2d6WLktpX96wLcdhuDO67XwOmN0M", "fumioh.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:23Z", "prior_shop"),
+            ("1iPbGf060RypkfQVMYSss8drehjHYDIdQ", "parentskudetail.20260801_20260831 (1).xlsx", "2026/08/01—08/31", "2026-09-03T05:43:12Z", "current_parent"),
+            ("1JvnpTNQkxkTiyA28EdDqmZHWIE0xDRbC", "fumioh.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:19Z", "current_shop"),
         ],
     },
 }
@@ -245,18 +245,18 @@ def build_shop(key, source):
     files = [checkpoint(source, item) for item in source["files"]]
     return {
         "name": source["name"],
-        "date": "2026/08/01—08/19",
+        "date": "2026/08/01—08/31",
         "priorDate": "2026/07/01—07/31",
         "source": {"modified": max(item["modified"] for item in files), "files": files},
-        "coverage": {"parentProducts": len(products), "priorParentProducts": len(prior_products), "periodDays": 19, "priorPeriodDays": 31},
+        "coverage": {"parentProducts": len(products), "priorParentProducts": len(prior_products), "periodDays": 31, "priorPeriodDays": 31},
         "totals": totals,
         "priorTotals": prior_totals,
         "productTotals": product_totals,
         "priorProductTotals": prior_product_totals,
-        "comparisonDaily": volume_comparison(totals, prior_totals, 19, 31),
+        "comparisonDaily": volume_comparison(totals, prior_totals, 31, 31),
         "history": [
             {"period": "2026/07", "days": 31, "totals": prior_totals},
-            {"period": "08/01—08/19", "days": 19, "totals": totals},
+            {"period": "2026/08", "days": 31, "totals": totals},
         ],
         "daily": current_shop["daily"],
         "topProducts": by_score[:6],
@@ -269,9 +269,9 @@ def build_shop(key, source):
 
 
 payload = {
-    "version": "1.2.0",
-    "generatedAt": "2026-08-20T17:00:00+08:00",
-    "method": "Four-file incremental checkpoints per shop; shop totals from Shopee shop stats; product analysis from parent SKU summary rows; volume comparison normalized to daily averages.",
+    "version": "1.2.1",
+    "generatedAt": "2026-09-03T14:00:00+08:00",
+    "method": "Four-file incremental checkpoints per shop; complete August versus complete July; shop totals from Shopee shop stats; product analysis from parent SKU summary rows.",
     "competitiveness": {
         "scope": "同一店舖、同一期間的父商品內部相對比較；不是外部市場或蝦皮官方評分。",
         "weights": {"revenue": 27, "conversion": 24, "traffic": 18, "ctr": 16, "cart": 15},
