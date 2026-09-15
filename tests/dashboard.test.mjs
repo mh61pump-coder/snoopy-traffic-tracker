@@ -16,15 +16,18 @@ test('no secret or buyer PII is published', async () => {
   assert.doesNotMatch(data, /買家姓名|收件地址|電話號碼|訂單編號/);
 });
 
-test('latest monthly datasets are isolated and checkpointed', async () => {
+test('latest weekly datasets are isolated and checkpointed', async () => {
   const data = JSON.parse(await readFile('data/analysis.json', 'utf8'));
-  assert.equal(data.version, '1.2.1');
-  assert.equal(data.shops.rijing.source.files.length, 4);
-  assert.equal(data.shops.wenxin.source.files.length, 4);
-  assert.equal(data.shops.rijing.coverage.periodDays, 31);
-  assert.equal(data.shops.rijing.coverage.priorPeriodDays, 31);
-  assert.equal(data.shops.rijing.totals.orders, 339);
-  assert.equal(data.shops.wenxin.totals.orders, 1294);
+  assert.equal(data.version, '1.2.2');
+  assert.equal(data.shops.rijing.source.files.length, 8);
+  assert.equal(data.shops.wenxin.source.files.length, 8);
+  assert.equal(data.shops.rijing.coverage.periodDays, 7);
+  assert.equal(data.shops.rijing.coverage.priorPeriodDays, 7);
+  assert.equal(data.shops.rijing.totals.orders, 76);
+  assert.equal(data.shops.wenxin.totals.orders, 299);
+  assert.equal(data.shops.rijing.history.length, 4);
+  assert.equal(data.shops.wenxin.history.length, 4);
+  assert.match(data.shops.rijing.date, /09\/07/);
   assert.notEqual(data.shops.rijing.source.files[0].sha256, data.shops.wenxin.source.files[0].sha256);
 });
 
@@ -42,6 +45,6 @@ test('clear funnel, top seven traffic products and score components exist', asyn
 test('period comparison remains normalized by covered days', async () => {
   const data = JSON.parse(await readFile('data/analysis.json', 'utf8'));
   const shop = data.shops.rijing;
-  const expected = ((shop.totals.revenue / 31) - (shop.priorTotals.revenue / 31)) / (shop.priorTotals.revenue / 31);
+  const expected = ((shop.totals.revenue / 7) - (shop.priorTotals.revenue / 7)) / (shop.priorTotals.revenue / 7);
   assert.ok(Math.abs(shop.comparisonDaily.revenue - expected) < 0.0001);
 });

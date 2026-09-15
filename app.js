@@ -1,4 +1,4 @@
-const VERSION = '1.2.1';
+const VERSION = '1.2.2';
 const drive = {
   rijing: 'https://drive.google.com/drive/folders/1C_YMhFn99oBoc4bgZwEUo8WK-DJgUhm9',
   wenxin: 'https://drive.google.com/drive/folders/1LG-ulf2eOM1SZceiMhdQ4jRZi3U-kQCn'
@@ -34,7 +34,9 @@ function render() {
     const value = shop.comparisonDaily[key];
     return [signedPercent(value), value === null ? '' : value >= 0 ? 'up' : 'down'];
   };
-  const comparisonLabel = shop.coverage.periodDays === shop.coverage.priorPeriodDays ? 'vs. 2026/07' : '日均 vs. 2026/07';
+  const comparisonLabel = shop.coverage.periodDays === shop.coverage.priorPeriodDays
+    ? `vs. ${shop.priorLabel}`
+    : `日均 vs. ${shop.priorLabel}`;
   const kpis = [
     ['店舖訪客', integer(totals.visitors), ...delta('visitors')],
     ['商品點擊', integer(totals.clicks), ...delta('clicks')],
@@ -109,7 +111,7 @@ function renderDiagnosis(shop) {
   const noOrder = shop.opportunities[0];
   const revenueDirection = shop.comparisonDaily.revenue >= 0 ? '增加' : '減少';
   const periodNote = shop.coverage.periodDays === shop.coverage.priorPeriodDays
-    ? `本期與前期皆為 ${shop.coverage.periodDays} 天，可直接比較完整月；8 月營收${revenueDirection} ${Math.abs(shop.comparisonDaily.revenue * 100).toFixed(1)}%。`
+    ? `本期與前期皆為 ${shop.coverage.periodDays} 天，可直接比較相同天數；本期營收${revenueDirection} ${Math.abs(shop.comparisonDaily.revenue * 100).toFixed(1)}%。`
     : `本期為 ${shop.coverage.periodDays} 天、前期為 ${shop.coverage.priorPeriodDays} 天；因此變化一律用「每日平均」比較。日均營收${revenueDirection} ${Math.abs(shop.comparisonDaily.revenue * 100).toFixed(1)}%。`;
   const insights = [
     [
@@ -211,7 +213,7 @@ function renderTraffic(shop) {
         </div>
         <code>${metric.formula} = ${percent(metric.value)}</code>
         <p>${metric.meaning}</p>
-        <small class="${favorable ? 'good' : 'watch'}">較 2026/07 ${signedPoints(difference)}</small>
+        <small class="${favorable ? 'good' : 'watch'}">較 ${escapeHtml(shop.priorLabel)} ${signedPoints(difference)}</small>
       </article>`;
   }).join('');
 }

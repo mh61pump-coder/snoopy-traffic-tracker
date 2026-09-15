@@ -13,29 +13,57 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "rijing": {
         "name": "日井",
-        "current_parent": ROOT / "work/r_parent_aug31.xlsx",
-        "prior_parent": ROOT / "work/r_parent_jul.xlsx",
-        "current_shop": ROOT / "work/r_shop_aug31.xlsx",
-        "prior_shop": ROOT / "work/r_shop_jul31_new.xlsx",
-        "files": [
-            ("16gu6yR92YA02oICGS86A_1hjja_DLIyQ", "parentskudetail.20260701_20260731.xlsx", "2026/07/01—07/31", "2026-08-20T08:33:12Z", "prior_parent"),
-            ("1SGA6kh2ohqpbnSIa0nCMdi4XzMoiy4Ly", "vincenthung.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:16Z", "prior_shop"),
-            ("1iBhyaiM1cdA5UppLYmTEePuWojKfVklb", "parentskudetail.20260801_20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:43:06Z", "current_parent"),
-            ("1rh4LNXG0MAyL3Qwd0d98a7MZ-ZHdiKNf", "vincenthung.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:00Z", "current_shop"),
+        "current_parent": ROOT / "work/r_parent_0907_0913.xlsx",
+        "prior_parent": ROOT / "work/r_parent_0831_0906.xlsx",
+        "current_shop": ROOT / "work/r_shop_0907_0913.xlsx",
+        "prior_shop": ROOT / "work/r_shop_0831_0906.xlsx",
+        "history_shop": [
+            ("2026/07", 31, ROOT / "work/r_shop_jul31_new.xlsx"),
+            ("2026/08", 31, ROOT / "work/r_shop_aug31.xlsx"),
+            ("2026/08/31—09/06", 7, ROOT / "work/r_shop_0831_0906.xlsx"),
+            ("2026/09/07—09/13", 7, ROOT / "work/r_shop_0907_0913.xlsx"),
         ],
+        "files": [
+            ("16gu6yR92YA02oICGS86A_1hjja_DLIyQ", "parentskudetail.20260701_20260731.xlsx", "2026/07/01—07/31", "2026-08-20T08:33:12Z", "jul_parent"),
+            ("1SGA6kh2ohqpbnSIa0nCMdi4XzMoiy4Ly", "vincenthung.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:16Z", "jul_shop"),
+            ("1iBhyaiM1cdA5UppLYmTEePuWojKfVklb", "parentskudetail.20260801_20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:43:06Z", "aug_parent"),
+            ("1rh4LNXG0MAyL3Qwd0d98a7MZ-ZHdiKNf", "vincenthung.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:00Z", "aug_shop"),
+            ("1jGAZuJYlKldCGREoFjGUogBy-nKVWvgJ", "parentskudetail.20260831_20260906.xlsx", "2026/08/31—09/06", "2026-09-15T01:41:31Z", "prior_parent"),
+            ("1BouOrbyWZS6_9PVC0YxyWi05te2wb6kj", "vincenthung.shopee-shop-stats.20260831-20260906.xlsx", "2026/08/31—09/06", "2026-09-15T01:33:51Z", "prior_shop"),
+            ("1wOOcBH69xNfiKp_FUewj0ZlKzkgshVcb", "parentskudetail.20260907_20260913.xlsx", "2026/09/07—09/13", "2026-09-15T01:44:48Z", "current_parent"),
+            ("1BcPugBsYO4Ts1joyvBCG14hX4-CA2DpJ", "vincenthung.shopee-shop-stats.20260907-20260913.xlsx", "2026/09/07—09/13", "2026-09-15T01:38:04Z", "current_shop"),
+        ],
+        "aug_parent": ROOT / "work/r_parent_aug31.xlsx",
+        "aug_shop": ROOT / "work/r_shop_aug31.xlsx",
+        "jul_parent": ROOT / "work/r_parent_jul.xlsx",
+        "jul_shop": ROOT / "work/r_shop_jul31_new.xlsx",
     },
     "wenxin": {
         "name": "文信",
-        "current_parent": ROOT / "work/w_parent_aug31.xlsx",
-        "prior_parent": ROOT / "work/w_parent_jul.xlsx",
-        "current_shop": ROOT / "work/w_shop_aug31.xlsx",
-        "prior_shop": ROOT / "work/w_shop_jul31_new.xlsx",
-        "files": [
-            ("18P8zmEL_YeZRHsLw-fNZHxxn4D5R1I9l", "parentskudetail.20260701_20260731 (1).xlsx", "2026/07/01—07/31", "2026-08-20T08:33:47Z", "prior_parent"),
-            ("1jMXa2d6WLktpX96wLcdhuDO67XwOmN0M", "fumioh.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:23Z", "prior_shop"),
-            ("1iPbGf060RypkfQVMYSss8drehjHYDIdQ", "parentskudetail.20260801_20260831 (1).xlsx", "2026/08/01—08/31", "2026-09-03T05:43:12Z", "current_parent"),
-            ("1JvnpTNQkxkTiyA28EdDqmZHWIE0xDRbC", "fumioh.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:19Z", "current_shop"),
+        "current_parent": ROOT / "work/w_parent_0907_0913.xlsx",
+        "prior_parent": ROOT / "work/w_parent_0831_0906.xlsx",
+        "current_shop": ROOT / "work/w_shop_0907_0913.xlsx",
+        "prior_shop": ROOT / "work/w_shop_0831_0906.xlsx",
+        "history_shop": [
+            ("2026/07", 31, ROOT / "work/w_shop_jul31_new.xlsx"),
+            ("2026/08", 31, ROOT / "work/w_shop_aug31.xlsx"),
+            ("2026/08/31—09/06", 7, ROOT / "work/w_shop_0831_0906.xlsx"),
+            ("2026/09/07—09/13", 7, ROOT / "work/w_shop_0907_0913.xlsx"),
         ],
+        "files": [
+            ("18P8zmEL_YeZRHsLw-fNZHxxn4D5R1I9l", "parentskudetail.20260701_20260731 (1).xlsx", "2026/07/01—07/31", "2026-08-20T08:33:47Z", "jul_parent"),
+            ("1jMXa2d6WLktpX96wLcdhuDO67XwOmN0M", "fumioh.shopee-shop-stats.20260701-20260731 (1).xlsx", "2026/07/01—07/31", "2026-09-03T05:42:23Z", "jul_shop"),
+            ("1iPbGf060RypkfQVMYSss8drehjHYDIdQ", "parentskudetail.20260801_20260831 (1).xlsx", "2026/08/01—08/31", "2026-09-03T05:43:12Z", "aug_parent"),
+            ("1JvnpTNQkxkTiyA28EdDqmZHWIE0xDRbC", "fumioh.shopee-shop-stats.20260801-20260831.xlsx", "2026/08/01—08/31", "2026-09-03T05:40:19Z", "aug_shop"),
+            ("1SgLj84vA9KylueX9rE4cDArjviGZ6LMR", "parentskudetail.20260831_20260906 (1).xlsx", "2026/08/31—09/06", "2026-09-15T01:41:33Z", "prior_parent"),
+            ("1p3oLiK4WMkKyAXpdPAh8VwsPhIE-Nnk7", "fumioh.shopee-shop-stats.20260831-20260906.xlsx", "2026/08/31—09/06", "2026-09-15T01:33:38Z", "prior_shop"),
+            ("1RX_SumwuCeo2HZ9SYe2QIKMTS_ly84CD", "parentskudetail.20260907_20260913 (1).xlsx", "2026/09/07—09/13", "2026-09-15T01:44:57Z", "current_parent"),
+            ("1LZRdAgQ13UD9EHTRbzTqpSXFFc6AwOeJ", "fumioh.shopee-shop-stats.20260907-20260913.xlsx", "2026/09/07—09/13", "2026-09-15T01:38:22Z", "current_shop"),
+        ],
+        "aug_parent": ROOT / "work/w_parent_aug31.xlsx",
+        "aug_shop": ROOT / "work/w_shop_aug31.xlsx",
+        "jul_parent": ROOT / "work/w_parent_jul.xlsx",
+        "jul_shop": ROOT / "work/w_shop_jul31_new.xlsx",
     },
 }
 
@@ -234,6 +262,8 @@ def build_shop(key, source):
     prior_product_totals = aggregate_products(prior_products)
     totals = current_shop["totals"]
     prior_totals = prior_shop["totals"]
+    current_days = len(current_shop["daily"])
+    prior_days = len(prior_shop["daily"])
     by_score = sorted(products, key=lambda product: (product["score"], product["revenue"]), reverse=True)
     by_revenue = sorted(products, key=lambda product: product["revenue"], reverse=True)
     by_traffic = sorted(products, key=lambda product: (product["visitors"], product["clicks"]), reverse=True)
@@ -243,21 +273,23 @@ def build_shop(key, source):
         reverse=True,
     )
     files = [checkpoint(source, item) for item in source["files"]]
+    history = [
+        {"period": period, "days": days, "totals": read_shop(path)["totals"]}
+        for period, days, path in source["history_shop"]
+    ]
     return {
         "name": source["name"],
-        "date": "2026/08/01—08/31",
-        "priorDate": "2026/07/01—07/31",
+        "date": "2026/09/07—09/13",
+        "priorDate": "2026/08/31—09/06",
+        "priorLabel": "前週 08/31—09/06",
         "source": {"modified": max(item["modified"] for item in files), "files": files},
-        "coverage": {"parentProducts": len(products), "priorParentProducts": len(prior_products), "periodDays": 31, "priorPeriodDays": 31},
+        "coverage": {"parentProducts": len(products), "priorParentProducts": len(prior_products), "periodDays": current_days, "priorPeriodDays": prior_days},
         "totals": totals,
         "priorTotals": prior_totals,
         "productTotals": product_totals,
         "priorProductTotals": prior_product_totals,
-        "comparisonDaily": volume_comparison(totals, prior_totals, 31, 31),
-        "history": [
-            {"period": "2026/07", "days": 31, "totals": prior_totals},
-            {"period": "2026/08", "days": 31, "totals": totals},
-        ],
+        "comparisonDaily": volume_comparison(totals, prior_totals, current_days, prior_days),
+        "history": history,
         "daily": current_shop["daily"],
         "topProducts": by_score[:6],
         "revenueLeaders": by_revenue[:7],
@@ -269,9 +301,9 @@ def build_shop(key, source):
 
 
 payload = {
-    "version": "1.2.1",
-    "generatedAt": "2026-09-03T14:00:00+08:00",
-    "method": "Four-file incremental checkpoints per shop; complete August versus complete July; shop totals from Shopee shop stats; product analysis from parent SKU summary rows.",
+    "version": "1.2.2",
+    "generatedAt": "2026-09-15T10:00:00+08:00",
+    "method": "Eight-file incremental checkpoints per shop; latest complete seven-day export versus the immediately prior complete seven-day export; July and August monthly checkpoints retained for history; shop totals from Shopee shop stats; product analysis from parent SKU summary rows.",
     "competitiveness": {
         "scope": "同一店舖、同一期間的父商品內部相對比較；不是外部市場或蝦皮官方評分。",
         "weights": {"revenue": 27, "conversion": 24, "traffic": 18, "ctr": 16, "cart": 15},
